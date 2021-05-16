@@ -1,3 +1,4 @@
 black==21.5b1
 pylint==2.8.2
 pytest==6.2.4
+pytest-cov==2.12.0

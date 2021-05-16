@@ -1,15 +1,16 @@
 from flask import Flask, render_template
+from http import HTTPStatus
 
 app = Flask(
     "recipe-manager",
 )
 
 
-@app.route("/")
+@app.route("/health")
 def index_page():
     """ Send the index page to the user. """
 
-    return render_template("index.html")
+    return {"status": "ok"}, HTTPStatus.OK
 
 
 if __name__ == "__main__":

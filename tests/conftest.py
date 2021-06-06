@@ -1,6 +1,7 @@
 import pytest
 
-from app import app
+from recipe_manager.app import app
+
 
 @pytest.fixture(name="client")
 def test_client():

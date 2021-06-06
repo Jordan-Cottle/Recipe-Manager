@@ -1,5 +1,5 @@
 [run]
-source = recipe-manager
+source = recipe_manager
 
 [report]
 

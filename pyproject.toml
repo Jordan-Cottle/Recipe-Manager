@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "recipe_manager"
+version = "0.1.0"
+description = "REST api for tracking recipes"
+authors = ["Jordan Cottle"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+SQLAlchemy = "^1.4.17"
+Flask = "^2.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+pylint = "^2.8.3"
+pytest-cov = "^2.12.1"
+black = "^21.5b2"
+
+[tool.poetry.scripts]
+debug = "scripts:debug"
+test = "scripts:test"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

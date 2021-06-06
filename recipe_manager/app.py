@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+""" Main application module for the recipe manager api. """
+
+from flask import Flask
 from http import HTTPStatus
 
 app = Flask(
@@ -8,10 +10,6 @@ app = Flask(
 
 @app.route("/health")
 def index_page():
-    """ Send the index page to the user. """
+    """Send the index page to the user."""
 
     return {"status": "ok"}, HTTPStatus.OK
-
-
-if __name__ == "__main__":
-    app.run(debug=True)

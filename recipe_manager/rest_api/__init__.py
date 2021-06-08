@@ -2,6 +2,7 @@
 
 The REST api exposes interactions with the database.
 """
+# pylint: disable=wrong-import-position
 
 from flask.blueprints import Blueprint
 

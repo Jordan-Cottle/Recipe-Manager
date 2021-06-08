@@ -1,5 +1,7 @@
 """ Configuration settings for the flask application. """
 
+# pylint: disable=too-few-public-methods
+
 import os
 
 

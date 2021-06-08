@@ -19,6 +19,7 @@ black = "^21.5b2"
 run = "scripts:run"
 debug = "scripts:debug"
 test = "scripts:test"
+check = "scripts:static_analysis"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

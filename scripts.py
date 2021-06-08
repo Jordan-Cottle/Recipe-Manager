@@ -6,6 +6,7 @@ import sys
 import pytest
 
 PROJECT_DIR = f"{os.getcwd()}/recipe_manager"
+TEST_DIR = f"{os.getcwd()}/tests"
 
 # Setup environment paths
 os.environ["PYTHONPATH"] = PROJECT_DIR
@@ -47,3 +48,21 @@ def test():
     os.environ["FLASK_ENV"] = "testing"
 
     pytest.main(["--cov"])
+
+
+def static_analysis():
+    """Run static analysis checks on the code."""
+
+    selection = sys.argv[1] if len(sys.argv) > 1 else None
+
+    commands = {
+        "black": f"black -v --diff --check {PROJECT_DIR} {TEST_DIR}",
+        "pylint": f"pylint {PROJECT_DIR} {TEST_DIR}",
+    }
+
+    if selection in commands:
+        commands = {selection: commands[selection]}
+
+    for name, command in commands.items():
+        print(f"Running {name} check")
+        _run(command)

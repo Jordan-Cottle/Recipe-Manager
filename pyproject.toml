@@ -16,6 +16,7 @@ pytest-cov = "^2.12.1"
 black = "^21.5b2"
 
 [tool.poetry.scripts]
+run = "scripts:run"
 debug = "scripts:debug"
 test = "scripts:test"
 

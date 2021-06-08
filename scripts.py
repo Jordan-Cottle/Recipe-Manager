@@ -23,7 +23,7 @@ def run(command):
 def debug():
     """Run the application in debug mode."""
 
-    os.chdir("recipe_manager")
+    os.environ["APPLICATION_MODE"] = "dev"
     os.environ["FLASK_ENV"] = "development"
 
     run("flask run")
@@ -31,5 +31,8 @@ def debug():
 
 def test():
     """Run tests for the application."""
+
+    os.environ["APPLICATION_MODE"] = "test"
+    os.environ["FLASK_ENV"] = "testing"
 
     pytest.main(["--cov"])

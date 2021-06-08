@@ -1,15 +1,16 @@
 """ Main application module for the recipe manager api. """
 
 from flask import Flask
-from http import HTTPStatus
 
-app = Flask(
-    "recipe-manager",
-)
+from rest_api import rest_api_v1
 
 
-@app.route("/health")
-def index_page():
-    """Send the index page to the user."""
+def create_app():
+    """Create and setup the application object."""
+    app = Flask(
+        "recipe-manager",
+    )
 
-    return {"status": "ok"}, HTTPStatus.OK
+    app.register_blueprint(rest_api_v1, url_prefix="/api/v1")
+
+    return app

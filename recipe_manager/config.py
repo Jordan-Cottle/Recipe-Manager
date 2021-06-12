@@ -4,7 +4,8 @@
 
 import os
 
-
+# Objects used for flask config need ALL_CAPS attributes
+# pylint: disable=invalid-name
 class Config:
     """Common/default configuration values."""
 
@@ -12,6 +13,7 @@ class Config:
 
     @property
     def DATABASE_CONFIG(self):
+        """Get database configuration values."""
         return {"url": "sqlite:///recipes.db"}
 
 
@@ -26,7 +28,7 @@ class DevelopmentConfig(Config):
     def DATABASE_CONFIG(self):
         config = super().DATABASE_CONFIG
 
-        config["url"] = "sqlite:///:memory:"
+        config["url"] = "sqlite:///dev-recipes.db"
 
         return config
 
@@ -35,3 +37,25 @@ class TestingConfig(DevelopmentConfig):
     """Testing configration settings."""
 
     TESTING = True
+
+    @property
+    def DATABASE_CONFIG(self):
+        config = super().DATABASE_CONFIG
+
+        config["url"] = "sqlite:///:memory:"
+
+        return config
+
+
+CONFIG_MAP = {
+    "dev": DevelopmentConfig,
+    "prod": ProductionConfig,
+    "test": TestingConfig,
+}
+
+
+def get_config():
+    """Get configuration object based on environment."""
+    application_mode = os.getenv("APPLICATION_MODE", "dev")
+
+    return CONFIG_MAP[application_mode]()

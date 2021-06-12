@@ -3,6 +3,7 @@
 from flask import g, current_app
 
 from .engine import Database, DatabaseSession
+from .models import Base
 
 
 def inject_session():

@@ -52,4 +52,5 @@ class Database:
 
     @property
     def session(self) -> DatabaseSession:
+        """Return a DatabaseSession bound to this database."""
         return DatabaseSession(bind=self.engine)

@@ -18,8 +18,9 @@ black = "^21.5b2"
 [tool.poetry.scripts]
 run = "scripts:run"
 debug = "scripts:debug"
-test = "scripts:test"
+unit_test = "scripts:test"
 check = "scripts:static_analysis"
+db_init = "scripts:setup_db('dev')"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -20,7 +20,7 @@ run = "scripts:run"
 debug = "scripts:debug"
 unit_test = "scripts:test"
 check = "scripts:static_analysis"
-db_init = "scripts:setup_db('dev')"
+db_init = "scripts:setup_db"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

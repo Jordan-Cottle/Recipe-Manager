@@ -3,8 +3,6 @@
 import os
 import sys
 
-import pytest
-
 # Setup environment paths
 PROJECT_DIR = f"{os.getcwd()}/recipe_manager"
 TEST_DIR = f"{os.getcwd()}/tests"
@@ -84,7 +82,7 @@ def static_analysis():
         _run(command)
 
 
-def setup_db(mode):
+def setup_db(mode="dev"):
     """Initial setup for the database."""
 
     _set_flask_env(mode)
@@ -93,6 +91,3 @@ def setup_db(mode):
     database = Database(config.DATABASE_CONFIG)
 
     setup_database(database.engine)
-
-    # Workaround for poetry trying to call the return value of this function
-    return lambda: None

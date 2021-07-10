@@ -1,4 +1,5 @@
 """ Package for containing all of the database models. """
+# pylint: disable=wrong-import-position
 
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -12,5 +13,6 @@ def setup_database(engine):
     Base.metadata.create_all(engine)
 
 
-# pylint: disable=wrong-import-position
-from .recipe import Recipe
+from .ingredient import Ingredient
+from .step import Step
+from .recipe import Recipe, RecipeIngredient, RecipeStep

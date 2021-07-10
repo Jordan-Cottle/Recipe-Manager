@@ -1,15 +1,6 @@
 """ Verify that the database can be connected to and basic operations work. """
 
-import pytest
-from database import Database
 from database.models import setup_database, Recipe
-
-
-@pytest.fixture(name="database")
-def create_database(config):
-    """Create an in memory database for tests."""
-
-    return Database(config.DATABASE_CONFIG)
 
 
 def test_database(database):
@@ -25,7 +16,7 @@ def test_database(database):
 
 
 def test_model_create(database):
-    """Test models can be created and qu."""
+    """Test models can be created and queried."""
 
     setup_database(database.engine)
 
@@ -49,7 +40,7 @@ def test_model_create(database):
 
         recipe = recipes[0]
 
-        assert recipe.id == 1, "Recipes should have id auto assigned"
+        assert recipe.recipe_id == 1, "Recipes should have id auto assigned"
         assert recipe.name == name
         assert recipe.description == description
         assert recipe.author == author
